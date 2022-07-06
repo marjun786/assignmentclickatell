@@ -537,54 +537,15 @@ kubectl get service/springsample-service-loadbalancer |  awk {'print $1" " $2 " 
 NAME                             TYPE          EXTERNAL-IP                                                              PORT(S)
 springsample-service-loadbalancer  LoadBalancer  a71f383d39a5749718ad6efe4d516eca-1978462511.us-east-2.elb.amazonaws.com  80:32138/TCP
 
- curl -kv http://a71f383d39a5749718ad6efe4d516eca-1978462511.us-east-2.elb.amazonaws.com
-*   Trying 3.133.209.172:80...
-* Connected to a71f383d39a5749718ad6efe4d516eca-1978462511.us-east-2.elb.amazonaws.com (3.133.209.172) port 80 (#0)
-> GET / HTTP/1.1
-> Host: a71f383d39a5749718ad6efe4d516eca-1978462511.us-east-2.elb.amazonaws.com
-> User-Agent: curl/7.76.1
-> Accept: */*
->
-* Mark bundle as not supporting multiuse
-* HTTP 1.0, assume close after body
-< HTTP/1.0 200 OK
-< Server: BaseHTTP/0.6 Python/3.9.6
-< Date: Tue, 31 Aug 2021 18:28:47 GMT
-< Content-type: text/html; charset=UTF-8
-<
-* Closing connection 0
-Hello World! 今日は
+
 
 ```
+
+4. Application url is working on http://a6085a721161a4b05a9d0482ba71864f-1087627329.ca-central-1.elb.amazonaws.com/
+
+
 **************************************************************************************************************
 
-## **Phase 6: Alternate approach - Creating the Kubernetes object for the deployment, using helm chart templates**
 
-1. Creating the Helm chart templates for python http server
-
-```
- helm create springsample 
-WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /root/.kube/config
-WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /root/.kube/config
-Creating springsample 
-
-```
-
-5. Modify the values.yaml and Chart.yaml for the Imagepath, Pull Policy, Ingress details and tag
-(Templates are uploaded under helmcart folder)
-
-6. Installation of helm charts on EKS cluster
-
-```
-helm install springsample springsample/ --values springsample/values.yaml
-WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /root/.kube/config
-WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /root/.kube/config
-NAME: springsample
-LAST DEPLOYED: Tue Aug 31 18:16:12 2021
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-NOTES:
-1. Get the application URL by running these commands:
-  http://python-httpserver.local/
+ 
 ```
