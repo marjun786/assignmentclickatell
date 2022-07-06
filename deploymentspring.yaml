@@ -1,0 +1,24 @@
+ cat deployment-http.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springsample-deployment
+  labels:
+    app: springsample
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springsample
+  template:
+    metadata:
+      labels:
+        app: springsample
+    spec:
+      containers:
+      - name: springsample
+        image: 791155996298.dkr.ecr.ca-central-1.amazonaws.com/eks-assignment-ecr:latest 
+        stdin: true
+        tty: true
+        ports:
+        - containerPort: 8080
